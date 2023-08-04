@@ -1,0 +1,42 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.14'
+	id 'io.spring.dependency-management' version '1.1.2'
+}
+
+group = 'com.api'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '11'
+}
+
+repositories {
+	mavenCentral()
+}
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.hibernate:hibernate-envers:5.5.6.Final'
+
+	compileOnly 'org.projectlombok:lombok'
+	implementation group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.11.2'
+
+
+	//compile group: 'com.itextpdf', name: 'itextpdf', version: '5.5.13.1'
+
+	implementation group: 'com.vladmihalcea', name: 'hibernate-types-52', version: '2.12.1'
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly group: 'com.h2database', name: 'h2', version: '2.2.220'
+
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
